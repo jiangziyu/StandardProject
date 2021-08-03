@@ -1,0 +1,2 @@
+# StandardProject
+standard android project
