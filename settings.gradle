@@ -1,0 +1,4 @@
+rootProject.name = "Standard"
+include ':app'
+include ':basemodule'
+include ':httpmodule'
