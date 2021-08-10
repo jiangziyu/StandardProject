@@ -63,4 +63,7 @@ dependencies {
     testImplementation dependencies.junit
     androidTestImplementation dependencies.test_junit
     androidTestImplementation dependencies.espresso
+
+    api project(':basemodule')
+
 }

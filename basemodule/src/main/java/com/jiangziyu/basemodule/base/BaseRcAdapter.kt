@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
  * Created by jiangziyu on 2021/5/12 15:02.
  */
 abstract class BaseRcAdapter : RecyclerView.Adapter<BaseRcHolder>() {
-    // TODO: 2021/5/12 再写一个适合多样化item的Adapter ，写到CommonModule中
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseRcHolder {
-        // TODO: 2021/5/14 根据不同的itemType返回不同的View 
         val v: View = LayoutInflater.from(parent.context).inflate(getItemLayoutId(), parent, false)
         return BaseRcHolder(v)
     }

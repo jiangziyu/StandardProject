@@ -1,21 +1,27 @@
 package com.jiangziyu.basemodule.base
 
+import androidx.databinding.ViewDataBinding
+
 /**
  * Desc:
  * Created by jiangziyu on 2021/5/12 11:28.
  */
-abstract class LazyFragment : BaseFragment() {
+abstract class LazyFragment<BindingType : ViewDataBinding> : BaseFragment<BindingType>() {
 
     private var isFirstLoad = false
 
-    // TODO: 2021/5/12 关于setUserVisibleHint过时的问题待修改
-
     override fun onResume() {
         super.onResume()
+        if (!isFirstLoad) {
+            lazyLoad()
+            isFirstLoad = true
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        isFirstLoad = true
+        isFirstLoad = false
     }
+
+    abstract fun lazyLoad()
 }

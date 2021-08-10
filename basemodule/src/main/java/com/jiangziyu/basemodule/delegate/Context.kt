@@ -19,3 +19,9 @@ fun Context.showCenterToast(text:String,gravity: Gravity){
     result.setGravity(Gravity.CENTER,0,0)
     result.show()
 }
+
+fun Toast.showToast(context:Context,text:String){
+    val result=Toast.makeText(context,text,Toast.LENGTH_SHORT)
+    result.show()
+}
+

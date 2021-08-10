@@ -10,10 +10,10 @@ import retrofit2.http.*
  */
 interface HttpService {
     @FormUrlEncoded
-    @POST("drhua.ashx/")
+    @GET("wxarticle/chapters/json")
     fun postDataWithMap(@FieldMap fields: Map<String, String>): Call<ResponseBody>
 
-    @FormUrlEncoded
-    @POST("mobile.ashx/")
-    fun postDataToGardsenWithMap(@FieldMap fields: Map<String, String>): Call<ResponseBody>
+    @GET("wxarticle/chapters/json")
+    fun getWan():Call<ResponseBody>
+
 }

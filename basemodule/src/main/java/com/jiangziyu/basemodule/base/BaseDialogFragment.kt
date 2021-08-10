@@ -14,8 +14,6 @@ import com.jiangziyu.basemodule.R
  */
 abstract class BaseDialogFragment : DialogFragment() {
 
-    // TODO: 2021/5/12 尝试下别的设计模式？
-    
     private var mDimAmount = 0.5f //背景昏暗度
     private var mAnimStyle = 0  //进出动画
     private var showBottom = false //是否显示在底部

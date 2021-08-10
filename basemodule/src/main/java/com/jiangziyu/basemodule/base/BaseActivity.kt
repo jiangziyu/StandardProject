@@ -3,19 +3,25 @@ package com.jiangziyu.basemodule.base
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import org.greenrobot.eventbus.EventBus
 
 /**
  * Desc:
  * Created by jiangziyu on 2021/5/12 10:48.
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<BindingType : ViewDataBinding> : AppCompatActivity() {
 
-    // TODO: 2021/5/12 加入自定义的Activity栈 
+    lateinit var binding: BindingType
+
     abstract fun getLayoutId(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(getLayoutId())
+//        setContentView(getLayoutId())
+        binding = DataBindingUtil.setContentView(this, getLayoutId())
         super.onCreate(savedInstanceState)
+        initView()
     }
 
     fun setOnClickListener(onClickListener: View.OnClickListener, vararg views: View) {
@@ -26,7 +32,30 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    protected fun register() {
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this)
+        }
+    }
+
+    private fun unRegister() {
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this)
+        }
+    }
+
+    protected fun postEvent(event: Any) {
+        EventBus.getDefault().post(event)
+    }
+
+    protected fun postSticky(event: Any) {
+        EventBus.getDefault().postSticky(event)
+    }
+
     override fun onDestroy() {
+        unRegister()
         super.onDestroy()
     }
+
+    abstract fun initView()
 }

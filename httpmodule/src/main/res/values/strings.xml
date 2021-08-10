@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HttpModule</string>
+    <string name="getChapter">获取数据</string>
 </resources>

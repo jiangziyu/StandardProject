@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
 }
 
@@ -9,11 +9,9 @@ android {
     buildToolsVersion configs.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.jiangziyu.httpmodule"
+//        applicationId "com.jiangziyu.httpmodule"
         minSdkVersion configs.minSdkVersion
         targetSdkVersion configs.targetSdkVersion
-        versionCode configs.versionCode
-        versionName configs.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,5 +46,5 @@ dependencies {
     androidTestImplementation dependencies.espresso
 
     implementation dependencies.retrofit2
-    implementation dependencies.retorfit2_converter_scalars
+    api dependencies.retorfit2_converter_gson
 }
