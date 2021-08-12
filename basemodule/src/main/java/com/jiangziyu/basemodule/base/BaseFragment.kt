@@ -34,7 +34,13 @@ abstract class BaseFragment<BindingType : ViewDataBinding> : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
 //        return inflater.inflate(getLayoutId(), container, false)
+        initView()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModel()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -60,4 +66,7 @@ abstract class BaseFragment<BindingType : ViewDataBinding> : Fragment() {
     override fun onDetach() {
         super.onDetach()
     }
+
+    abstract fun initView()
+    abstract fun initViewModel()
 }

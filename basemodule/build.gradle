@@ -50,6 +50,7 @@ dependencies {
     androidTestImplementation dependencies.espresso
 
     implementation dependencies.event_bus
+    api dependencies.flex_box
 
     api project(':httpmodule')
 }

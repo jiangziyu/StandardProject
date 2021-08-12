@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">HttpModule</string>
     <string name="getChapter">获取数据</string>
+    <string name="pointDraw">抽奖</string>
 </resources>

@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/act_point_draw.xml" value="0.35054347826086957" />
+        <entry key="app/src/main/res/layout/act_scroll_event.xml" value="0.35054347826086957" />
+        <entry key="app/src/main/res/layout/act_srcoll_event.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1887031408308004" />
+        <entry key="app/src/main/res/layout/frag_point_draw.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/frag_scroll_event.xml" value="0.35054347826086957" />
+        <entry key="app/src/main/res/layout/item_chapter.xml" value="0.35054347826086957" />
+        <entry key="app/src/main/res/layout/item_point_draw.xml" value="0.35054347826086957" />
       </map>
     </option>
   </component>

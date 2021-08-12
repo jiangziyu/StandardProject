@@ -22,6 +22,7 @@ abstract class BaseActivity<BindingType : ViewDataBinding> : AppCompatActivity()
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         super.onCreate(savedInstanceState)
         initView()
+        initViewModel()
     }
 
     fun setOnClickListener(onClickListener: View.OnClickListener, vararg views: View) {
@@ -58,4 +59,5 @@ abstract class BaseActivity<BindingType : ViewDataBinding> : AppCompatActivity()
     }
 
     abstract fun initView()
+    abstract fun initViewModel()
 }

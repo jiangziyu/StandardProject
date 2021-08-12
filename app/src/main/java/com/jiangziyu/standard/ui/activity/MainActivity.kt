@@ -1,4 +1,4 @@
-package com.jiangziyu.standard.view.activity
+package com.jiangziyu.standard.ui.activity
 
 
 import android.view.View
@@ -19,26 +19,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initView() {
         initViewModel()
-        setOnClickListener(onClickListener, binding.btnMain)
+        setOnClickListener(onClickListener, binding.btnMain,binding.btnPointDraw)
     }
 
-    private fun initViewModel() {
-        viewModel =
-            ViewModelProvider(this).get(MainViewModel::class.java)
-//        viewModel = ViewModelProvider(
-//            this,
-//            MainViewModel.MainViewModelFactory()
-//        ).get(MainViewModel::class.java)
-        viewModel.chapter.observe(this, Observer { result ->
-            val data = result
-            binding.tvData.text = data.toString()
-        })
+    override fun initViewModel() {
+        viewModel = ViewModelProvider(
+            this,
+            MainViewModel.MainViewModelFactory()
+        ).get(MainViewModel::class.java)
     }
 
     private val onClickListener = View.OnClickListener { v ->
         when (v.id) {
             R.id.btnMain -> {
-                viewModel.getChapters()
+                ScrollEventAct.start(this)
+            }
+            R.id.btnPointDraw->{
+                PointDrawAct.start(this)
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.jiangziyu.basemodule.base
 
+import android.util.Log
 import androidx.databinding.ViewDataBinding
 
 /**
