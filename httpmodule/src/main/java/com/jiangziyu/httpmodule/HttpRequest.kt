@@ -2,7 +2,6 @@ package com.jiangziyu.httpmodule
 
 import android.app.Activity
 import android.util.Log
-import com.google.gson.Gson
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -20,9 +19,9 @@ object HttpRequest {
 
     val TAG = HttpRequest.javaClass.simpleName
 
-    val CODE_SUCESS = 1 //与后台接口成功
-    val CODE_FAILURE = -1001 //retrofit错误码
-    val CODE_JSON_EXCEPTION = -1002 //json转换错误码
+    const val CODE_SUCESS = 1 //与后台接口成功
+    const val CODE_FAILURE = -1001 //retrofit错误码
+    const val CODE_JSON_EXCEPTION = -1002 //json转换错误码
 
     private val retrofit by lazy {
 //        val logInterceptor = OkHttpClient.Builder().addInterceptor(LogInterceptor()).build()
@@ -36,6 +35,7 @@ object HttpRequest {
 
     private lateinit var httpService: HttpService
 
+    //这里调用create即创建动态代理对象
     private fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
 
     /**
@@ -45,10 +45,11 @@ object HttpRequest {
         httpService = create(HttpService::class.java)
     }
 
-    fun getChapter(responseCallBack: ResponseCallBack){
-        httpService.getWan().enqueue(object :Callback<ResponseBody>{
+    fun getChapter(responseCallBack: ResponseCallBack) {
+        //enqueue会自动在内部开启子线程，回调CallBack会切换会主线程
+        httpService.getWan().enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                dealResponse(response,responseCallBack)
+                dealResponse(response, responseCallBack)
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -84,8 +85,8 @@ object HttpRequest {
     private fun dealResponse(response: Response<ResponseBody>, responseCallBack: ResponseCallBack) {
         val responseResult = ResponseResult()
         try {
-            if (response.isSuccessful) {
-                val jsonObj = JSONObject(response.body()?.string())
+            if (response.isSuccessful && response.body() != null) {
+                val jsonObj = JSONObject(response.body()!!.string())
                 Log.e(TAG, jsonObj.toString())
                 when (val retVal = jsonObj.getString("errorCode")) {
                     "0" -> {

@@ -45,15 +45,16 @@ class PointDrawFrag : BaseFragment<FragPointDrawBinding>() {
     private fun pointDraw() {
         aimNum = (0..8).random()
         val totalNum = REPEAT_NUM * GRID_NUM + aimNum
-        val valueAnimator = ValueAnimator.ofInt(0, totalNum)
-        valueAnimator.duration = 4000
-        //默认的差值器就是这个，如果需要再设置，加入参就好，或者替换
-        valueAnimator.interpolator = AccelerateDecelerateInterpolator()
-        valueAnimator.addUpdateListener { animation ->
-            val position = animation!!.animatedValue as Int
-            pointDrawAdapter.setChosenPosition(position % GRID_NUM)
-            if (position == totalNum) {
-                showResult()
+        val valueAnimator = ValueAnimator.ofInt(0, totalNum).apply {
+            duration = 4000
+            //默认的差值器就是这个，如果需要再设置，加入参就好，或者替换
+            interpolator = AccelerateDecelerateInterpolator()
+            addUpdateListener { animation ->
+                val position = animation!!.animatedValue as Int
+                pointDrawAdapter.setChosenPosition(position % GRID_NUM)
+                if (position == totalNum) {
+                    showResult()
+                }
             }
         }
         valueAnimator.start()
@@ -69,9 +70,9 @@ class PointDrawFrag : BaseFragment<FragPointDrawBinding>() {
     private fun initRecycler() {
         list = arrayListOf("1", "2", "3", "4", "5", "6", "7", "8", "9")
         val flexBoxLayoutManager = FlexboxLayoutManager(activity).apply {
-            flexDirection = FlexDirection.ROW
-            justifyContent = JustifyContent.CENTER
-            alignItems = AlignItems.FLEX_START
+            flexDirection = FlexDirection.ROW//横向
+            justifyContent = JustifyContent.CENTER//横向居中-主轴上的排列方向
+            alignItems = AlignItems.FLEX_START//竖向居顶-次轴上的排列方向
         }
         pointDrawAdapter = PointDrawAdapter(list)
         binding.rcPointDraw.run {

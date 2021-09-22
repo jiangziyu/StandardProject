@@ -33,7 +33,7 @@ class PointDrawAdapter(val list: List<String>) : BaseRcAdapter() {
     @SuppressLint("ResourceAsColor")
     override fun itemAction(holder: BaseRcHolder?, position: Int) {
         val binding = holder!!.getBinding<ItemPointDrawBinding>()
-        val context=holder.itemView.context
+        val context = holder.itemView.context
         val item = list.get(position)
         binding.tvNumber.text = item
 //        val param = llPointDrawItem.layoutParams
@@ -44,11 +44,11 @@ class PointDrawAdapter(val list: List<String>) : BaseRcAdapter() {
 //        }
 //        llPointDrawItem.layoutParams = param
         if (currentPosition == position) {
-            binding.tvNumber.setTextColor(ContextCompat.getColor(context,R.color.teal_200))
-            binding.flParent.setBackgroundColor(ContextCompat.getColor(context,R.color.teal_700))
+            binding.tvNumber.setTextColor(ContextCompat.getColor(context, R.color.teal_200))
+            binding.flParent.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_700))
         } else {
-            binding.tvNumber.setTextColor(ContextCompat.getColor(context,R.color.black))
-            binding.flParent.setBackgroundColor(ContextCompat.getColor(context,R.color.purple_200))
+            binding.tvNumber.setTextColor(ContextCompat.getColor(context, R.color.black))
+            binding.flParent.setBackgroundColor(ContextCompat.getColor(context, R.color.purple_200))
         }
 
     }

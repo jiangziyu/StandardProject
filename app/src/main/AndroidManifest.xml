@@ -20,7 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.ScrollEventAct"/>
+        <activity android:name=".ui.activity.ScrollEventAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.standard.app.ACTION_START"/>
+                <category android:name="com.standard.app.MY_CATEGORY"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.activity.PointDrawAct"/>
     </application>
 

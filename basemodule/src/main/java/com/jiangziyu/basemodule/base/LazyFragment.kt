@@ -1,6 +1,5 @@
 package com.jiangziyu.basemodule.base
 
-import android.util.Log
 import androidx.databinding.ViewDataBinding
 
 /**
@@ -9,19 +8,19 @@ import androidx.databinding.ViewDataBinding
  */
 abstract class LazyFragment<BindingType : ViewDataBinding> : BaseFragment<BindingType>() {
 
-    private var isFirstLoad = false
+    private var isLoaded = false
 
     override fun onResume() {
         super.onResume()
-        if (!isFirstLoad) {
+        if (!isLoaded && !isHidden) {
             lazyLoad()
-            isFirstLoad = true
+            isLoaded = true
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        isFirstLoad = false
+        isLoaded = false
     }
 
     abstract fun lazyLoad()

@@ -49,7 +49,7 @@ dependencies {
     androidTestImplementation dependencies.test_junit
     androidTestImplementation dependencies.espresso
 
-    implementation dependencies.event_bus
+    api dependencies.event_bus
     api dependencies.flex_box
 
     api project(':httpmodule')

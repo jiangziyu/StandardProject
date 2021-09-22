@@ -47,10 +47,6 @@ class ScrollEventFrag : LazyFragment<FragScrollEventBinding>() {
         })
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
-
 
     override fun lazyLoad() {
         getData()
